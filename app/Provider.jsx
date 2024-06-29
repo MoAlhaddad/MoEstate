@@ -4,8 +4,10 @@ import Header from './_components/Header'
 function Provider({children}) {
   return (
     <div>
+        
         <Header/>
-      {children}
+        <div className='mt-20'>{children}</div>
+      
     </div>
   )
 }
