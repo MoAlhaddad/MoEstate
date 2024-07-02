@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SignOutButton } from "@clerk/nextjs";
+import { SignOutButton, UserButton, useUser } from "@clerk/nextjs";
 
 function Header() {
 
     const path = usePathname();
+    const {user, isSignedIn} = useUser()
 
     useEffect(() => {
         console.log(path)
@@ -25,13 +26,20 @@ function Header() {
         <Link href={'/'} ><li className={`'hover:text-primary font-md text-sm cursor-pointer'${path=='/'&& 'text-primary'}`}>For Sale</li></Link>
         <li className='hover:text-primary font-md text-sm cursor-pointer'>Land for Sale</li>
         <li className='hover:text-primary font-md text-sm cursor-pointer'>Agent Finder</li>
+        <Link href={'/edit-listing/6'}>Edit Plan</Link>
        
       </ul>
     </div>
     <div className='Flex gap-2'>
-        <Button className='flex gap-2'><Plus className='h-5 w-5'/> Post Your Add </Button>
-        <Button className='outline'>Login</Button>
-        <SignOutButton />
+        <Link href={'/add-new-listing'}>
+        <Button className='flex gap-2'><Plus className='h-2 w-2'/> Post Your Add </Button></Link>
+        {isSignedIn? <UserButton /> 
+             :
+             <Link href={'/sign-in'}
+             ><Button className='outline' >Login</Button>
+             </Link>
+        }
+        
     </div>
     </div>
   )
