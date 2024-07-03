@@ -23,11 +23,12 @@ function Header() {
       <ul className='hidden md:flex gap-10'>
    
       Build Financial Freedom 
-        <Link href={'/'} ><li className={`'hover:text-primary font-md text-sm cursor-pointer'${path=='/'&& 'text-primary'}`}>For Sale</li></Link>
+        
         <li className='hover:text-primary font-md text-sm cursor-pointer'>Land for Sale</li>
         <li className='hover:text-primary font-md text-sm cursor-pointer'>Agent Finder</li>
-        <Link href={'/edit-listing/6'}>Edit Plan</Link>
-       
+   
+        <Link href={'/edit-listing/6'} ><li className='hover:text-primary font-md text-sm cursor-pointer'>Edit Plan</li></Link>
+        <Link href={'/add-new-listing'}><li className={`'hover:text-primary font-md text-sm cursor-pointer'`}>For Sale</li></Link>
       </ul>
     </div>
     <div className='Flex gap-2'>
